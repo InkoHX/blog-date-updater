@@ -1,21 +1,21 @@
 {
-  "name": "typescript-template-yarn",
+  "name": "blog-date-updater",
   "version": "0.0.1",
-  "description": "TypeScript template for Yarn.",
-  "main": "dist/index.js",
+  "description": "A script that updates the creation and modification dates of the YAML headers in the updated markdown file for my blog. This is to resolve an issue where Vercel's build pipeline can't keep file creation and modification dates.",
+  "main": "lib/main.js",
   "license": "MIT",
   "homepage": "",
   "author": {
     "name": "InkoHX",
     "email": "inkohx@gmail.com",
-    "url": "https://about.inkohx.me"
+    "url": "https://inkohx.me"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/InkoHX/***.git"
+    "url": "https://github.com/InkoHX/blog-date-updater.git"
   },
   "bugs": {
-    "url": "https://github.com/InkoHX/***/issues"
+    "url": "https://github.com/InkoHX/blog-date-updater/issues"
   },
   "funding": {
     "type": "patreon",
@@ -28,15 +28,22 @@
     "compile": "tsc -p .",
     "compile:test": "tsc -p . --noEmit",
     "watch": "tsc -w -p .",
-    "watch:test": "tsc -w -p . --noEmit"
+    "watch:test": "tsc -w -p . --noEmit",
+    "pack": "npm run lint && npm run compile && ncc build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "glob": "^7.1.6",
+    "js-yaml": "^3.14.0"
+  },
   "peerDependencies": {},
   "devDependencies": {
     "@inkohx/eslint-config-codestyle": "^2.1.1",
+    "@types/glob": "^7.1.1",
+    "@types/js-yaml": "^3.12.4",
     "@types/node": "^14.0.5",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
+    "@zeit/ncc": "^0.22.3",
     "eslint": "^6.8.0",
     "typescript": "^3.9.3"
   }

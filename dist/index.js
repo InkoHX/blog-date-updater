@@ -2909,6 +2909,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCreatedDate = exports.getModifiedDate = void 0;
 const util_1 = __webpack_require__(345);
+const path_1 = __webpack_require__(622);
 exports.getModifiedDate = (path) => __awaiter(void 0, void 0, void 0, function* () {
     const { stdout, stderr } = yield util_1.exec([
         'git',
@@ -2917,8 +2918,8 @@ exports.getModifiedDate = (path) => __awaiter(void 0, void 0, void 0, function* 
         '--diff-filter=MA',
         '--follow',
         '--format=%ad',
-        path
-    ].join(' '));
+        path_1.resolve(path)
+    ].join(' '), { cwd: process.cwd() });
     if (stderr)
         throw new Error(stderr);
     return new Date(stdout);
@@ -2931,8 +2932,8 @@ exports.getCreatedDate = (path) => __awaiter(void 0, void 0, void 0, function* (
         '--diff-filter=A',
         '--follow',
         '--format=%ad',
-        path
-    ].join(' '));
+        path_1.resolve(path)
+    ].join(' '), { cwd: process.cwd() });
     if (stderr)
         throw new Error(stderr);
     return new Date(stdout);

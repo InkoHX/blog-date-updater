@@ -12,6 +12,8 @@ export const getModifiedDate = async (path: string): Promise<Date> => {
     '-1',
     '--diff-filter=MA',
     '--follow',
+    '--perl-regexp',
+    '--author=\'^((?!blog-date-updater-action).*)$\'',
     '--format=%ad',
     resolve(path)
   ].join(' '), { cwd: process.cwd() })
@@ -32,6 +34,8 @@ export const getCreatedDate = async (path: string): Promise<Date> => {
     '-1',
     '--diff-filter=A',
     '--follow',
+    '--perl-regexp',
+    '--author=\'^((?!blog-date-updater-action).*)$\'',
     '--format=%ad',
     resolve(path)
   ].join(' '), { cwd: process.cwd() })

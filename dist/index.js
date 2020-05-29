@@ -2917,6 +2917,8 @@ exports.getModifiedDate = (path) => __awaiter(void 0, void 0, void 0, function* 
         '-1',
         '--diff-filter=MA',
         '--follow',
+        '--perl-regexp',
+        '--author=\'^((?!blog-date-updater-action).*)$\'',
         '--format=%ad',
         path_1.resolve(path)
     ].join(' '), { cwd: process.cwd() });
@@ -2931,6 +2933,8 @@ exports.getCreatedDate = (path) => __awaiter(void 0, void 0, void 0, function* (
         '-1',
         '--diff-filter=A',
         '--follow',
+        '--perl-regexp',
+        '--author=\'^((?!blog-date-updater-action).*)$\'',
         '--format=%ad',
         path_1.resolve(path)
     ].join(' '), { cwd: process.cwd() });
